@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="CNC Užsakymai"/>
+<title>CNC Užsakymai</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f4;min-height:100vh;color:#1a1a1a}
+input,select,textarea,button{font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#3b82f6!important}
+a{text-decoration:none}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* Header */
+.header{background:#fff;border-bottom:1px solid #e5e7eb;padding:0 20px;position:sticky;top:0;z-index:10}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:52px}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-icon{font-size:20px}
+.logo-text{font-weight:600;font-size:15px}
+.tabs{display:flex;gap:2px}
+.tab{padding:6px 12px;border:none;border-radius:8px;background:transparent;color:#6b7280;cursor:pointer;font-size:13px;font-weight:400;transition:all .15s}
+.tab.active{background:#f3f4f6;color:#111}
+
+/* Toolbar */
+.toolbar{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.chip-row{display:flex;gap:6px;flex-wrap:wrap}
+.chip{padding:4px 12px;border-radius:20px;border:1px solid #e5e7eb;background:transparent;color:#6b7280;cursor:pointer;font-size:12px;transition:all .15s}
+.chip.active{border-color:#111;background:#f3f4f6;color:#111}
+.btn-row{display:flex;gap:8px;align-items:center}
+.btn-primary{padding:7px 16px;border:none;border-radius:8px;background:#111;color:#fff;cursor:pointer;font-size:13px;font-weight:500;display:flex;align-items:center;gap:5px}
+.btn-secondary{padding:7px 14px;border:1px solid #d1d5db;border-radius:8px;background:transparent;color:#6b7280;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:5px}
+
+/* Kanban */
+.kanban{max-width:1100px;margin:0 auto;padding:0 20px 40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media(max-width:640px){.kanban{grid-template-columns:1fr;padding:0 12px 40px}.toolbar{padding:10px 12px}.header-inner{padding:0}}
+.col-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;padding:0 2px}
+.col-title{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em}
+.col-dot{width:7px;height:7px;border-radius:50%}
+.col-count{font-size:11px;background:#f3f4f6;color:#9ca3af;border-radius:10px;padding:1px 8px;border:1px solid #e5e7eb}
+.col-body{display:flex;flex-direction:column;gap:8px}
+.col-empty{border:1px dashed #e5e7eb;border-radius:10px;padding:24px 0;text-align:center;color:#d1d5db;font-size:12px}
+
+/* Card */
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px}
+.card-top{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+.card-title{font-size:14px;font-weight:500;color:#111;line-height:1.35;flex:1}
+.card-actions{display:flex;gap:2px;flex-shrink:0}
+.icon-btn{background:none;border:none;cursor:pointer;color:#9ca3af;padding:2px 4px;font-size:14px;line-height:1;transition:color .15s}
+.icon-btn:hover{color:#374151}
+.cat-badge{font-size:11px;border-radius:10px;padding:1px 8px;display:inline-block;margin-bottom:8px;border:1px solid}
+.card-meta{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.card-qty{font-family:ui-monospace,monospace;font-weight:600;color:#111}
+.card-supplier{color:#6b7280;font-size:12px}
+.progress-bar{height:3px;background:#f3f4f6;border-radius:2px;overflow:hidden;margin-bottom:4px}
+.progress-fill{height:100%;border-radius:2px;transition:width .3s}
+.progress-warn{font-size:11px;color:#ca8a04}
+.card-footer{display:flex;gap:12px;font-size:12px;color:#9ca3af;margin-top:6px;flex-wrap:wrap}
+.card-url{font-size:11px;color:#3b82f6;display:block;margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-notes{font-size:11px;color:#9ca3af;margin-top:6px;border-top:1px solid #f3f4f6;padding-top:6px}
+.card-action-btn{margin-top:10px;width:100%;padding:6px;border:1px solid #e5e7eb;border-radius:8px;background:transparent;color:#6b7280;cursor:pointer;font-size:12px;transition:all .15s}
+.card-action-btn:hover{border-color:#111;color:#111}
+
+/* Modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal{background:#fff;border-radius:12px;width:100%;max-width:480px;max-height:92vh;overflow-y:auto;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.modal-header{padding:15px 20px;border-bottom:1px solid #f3f4f6;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.modal-title{font-weight:600;font-size:15px}
+.close-btn{background:none;border:none;cursor:pointer;color:#9ca3af;font-size:20px;line-height:1;padding:2px}
+.modal-body{padding:16px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;flex:1}
+.modal-footer{padding:12px 20px;border-top:1px solid #f3f4f6;display:flex;justify-content:flex-end;gap:8px;flex-shrink:0}
+.field-label{font-size:11px;color:#6b7280;margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;display:block}
+.field-input{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;color:#111;font-size:14px;padding:8px 10px;width:100%}
+.field-input:focus{background:#fff}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid-2-1{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+.cat-btns{display:flex;gap:6px;flex-wrap:wrap}
+.cat-btn{padding:4px 12px;border-radius:20px;border:1px solid #e5e7eb;background:transparent;cursor:pointer;font-size:12px;transition:all .15s}
+
+/* Suppliers view */
+.suppliers-grid{max-width:1100px;margin:0 auto;padding:16px 20px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.supplier-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px}
+.supplier-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.supplier-icon{width:34px;height:34px;border-radius:8px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.supplier-info{display:flex;flex-direction:column;gap:5px;font-size:12px;color:#6b7280}
+.supplier-divider{border-top:1px solid #f3f4f6;padding-top:6px;margin-top:2px}
+
+/* States */
+.loading{padding:60px;text-align:center;color:#9ca3af;font-size:13px}
+.error-box{padding:32px;color:#dc2626;font-size:13px;line-height:1.6}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+<script>
+const{useState,useEffect,useCallback,createElement:h}=React;
+
+const SB="https://llnjhrpvvjzjedotpkud.supabase.co";
+const SK="sb_publishable_Umsju_cGG4PmUYIzSGxblg_l64CP9dY";
+const H={apikey:SK,Authorization:`Bearer ${SK}`,"Content-Type":"application/json",Prefer:"return=representation"};
+
+async function q(method,table,body,qs=""){
+  const r=await fetch(`${SB}/rest/v1/${table}${qs}`,{method,headers:H,body:body?JSON.stringify(body):null});
+  if(!r.ok)throw new Error(await r.text());
+  const t=await r.text();return t?JSON.parse(t):null;
+}
+
+const CATS=[
+  {id:"cnc",label:"CNC dalys",hex:"#2563eb"},
+  {id:"irankiai",label:"Įrankiai",hex:"#d97706"},
+  {id:"ekspl",label:"Eksploatacinės",hex:"#16a34a"},
+  {id:"kita",label:"Kita",hex:"#6b7280"},
+];
+const UNITS=["vnt","m","kg","l","m²","kompl.","pak."];
+
+// ── Field helpers ─────────────────────────────────────────────────────
+function Field({label,children}){
+  return h("div",null,h("label",{className:"field-label"},label),children);
+}
+
+// ── OrderModal ────────────────────────────────────────────────────────
+function OrderModal({order,suppliers,onSave,onClose}){
+  const isEdit=!!order?.id;
+  const def={title:"",category:"cnc",supplier_id:"",quantity:1,unit:"vnt",estimated_price:"",url:"",deadline:"",notes:"",status:"poreikis"};
+  const[f,setF]=useState({...def,...(order?{...order,supplier_id:order.supplier_id||"",estimated_price:order.estimated_price||"",url:order.url||"",deadline:order.deadline||"",notes:order.notes||""}:{})});
+  const[busy,setBusy]=useState(false);
+  const set=(k,v)=>setF(x=>({...x,[k]:v}));
+  const save=async()=>{
+    if(!f.title.trim())return;
+    setBusy(true);
+    try{await onSave({...f,quantity:+f.quantity,estimated_price:f.estimated_price?+f.estimated_price:null,supplier_id:f.supplier_id||null});}
+    catch(e){alert("Klaida: "+e.message);}
+    finally{setBusy(false);}
+  };
+  return h("div",{className:"overlay",onClick:onClose},
+    h("div",{className:"modal",onClick:e=>e.stopPropagation()},
+      h("div",{className:"modal-header"},
+        h("span",{className:"modal-title"},isEdit?"Redaguoti užsakymą":"Naujas užsakymas"),
+        h("button",{className:"close-btn",onClick:onClose},"✕")
+      ),
+      h("div",{className:"modal-body"},
+        h(Field,{label:"Pavadinimas *"},h("input",{className:"field-input",value:f.title,onChange:e=>set("title",e.target.value),placeholder:"pvz. Freza D6 Karnasch",autoFocus:true})),
+        h(Field,{label:"Kategorija"},
+          h("div",{className:"cat-btns"},
+            CATS.map(c=>h("button",{key:c.id,className:"cat-btn",onClick:()=>set("category",c.id),style:{borderColor:f.category===c.id?c.hex:"#e5e7eb",background:f.category===c.id?c.hex+"20":"transparent",color:f.category===c.id?c.hex:"#6b7280"}},c.label))
+          )
+        ),
+        h("div",{className:"grid-2"},
+          h(Field,{label:"Tiekėjas"},
+            h("select",{className:"field-input",value:f.supplier_id,onChange:e=>set("supplier_id",e.target.value)},
+              h("option",{value:""},"— nepasirinkta —"),
+              suppliers.map(s=>h("option",{key:s.id,value:s.id},s.name))
+            )
+          ),
+          h(Field,{label:"Statusas"},
+            h("select",{className:"field-input",value:f.status,onChange:e=>set("status",e.target.value)},
+              h("option",{value:"poreikis"},"Poreikis"),
+              h("option",{value:"uzsakyta"},"Užsakyta"),
+              h("option",{value:"gauta"},"Gauta")
+            )
+          )
+        ),
+        h("div",{className:"grid-2-1"},
+          h(Field,{label:"Kiekis *"},h("input",{className:"field-input",type:"number",min:"0.01",step:"any",value:f.quantity,onChange:e=>set("quantity",e.target.value)})),
+          h(Field,{label:"Vnt."},
+            h("select",{className:"field-input",value:f.unit,onChange:e=>set("unit",e.target.value)},
+              UNITS.map(u=>h("option",{key:u},u))
+            )
+          )
+        ),
+        h("div",{className:"grid-2"},
+          h(Field,{label:"Numatoma kaina €"},h("input",{className:"field-input",type:"number",step:"0.01",value:f.estimated_price,onChange:e=>set("estimated_price",e.target.value),placeholder:"0.00"})),
+          h(Field,{label:"Terminas"},h("input",{className:"field-input",type:"date",value:f.deadline,onChange:e=>set("deadline",e.target.value)}))
+        ),
+        h(Field,{label:"Nuoroda (URL)"},h("input",{className:"field-input",value:f.url,onChange:e=>set("url",e.target.value),placeholder:"https://..."})),
+        h(Field,{label:"Pastabos"},h("textarea",{className:"field-input",style:{height:60,resize:"vertical"},value:f.notes,onChange:e=>set("notes",e.target.value)}))
+      ),
+      h("div",{className:"modal-footer"},
+        h("button",{className:"btn-secondary",onClick:onClose},"Atšaukti"),
+        h("button",{className:"btn-primary",onClick:save,disabled:busy},busy?"Saugoma...":"Išsaugoti")
+      )
+    )
+  );
+}
+
+// ── ReceiveModal ──────────────────────────────────────────────────────
+function ReceiveModal({order,onReceive,onClose}){
+  const rem=order.quantity-order.quantity_received;
+  const[qty,setQty]=useState(rem);
+  const[price,setPrice]=useState(order.actual_price||"");
+  const[busy,setBusy]=useState(false);
+  const go=async()=>{
+    const n=Math.min(+qty,rem);if(n<=0)return;
+    setBusy(true);
+    try{await onReceive(order,n,price?+price:null);}
+    catch(e){alert("Klaida: "+e.message);}
+    finally{setBusy(false);}
+  };
+  const pct=order.quantity>0?(order.quantity_received/order.quantity)*100:0;
+  return h("div",{className:"overlay",onClick:onClose},
+    h("div",{className:"modal",style:{maxWidth:380},onClick:e=>e.stopPropagation()},
+      h("div",{className:"modal-header"},
+        h("span",{className:"modal-title"},"Žymėti gautą"),
+        h("button",{className:"close-btn",onClick:onClose},"✕")
+      ),
+      h("div",{className:"modal-body"},
+        h("div",{style:{background:"#f9fafb",borderRadius:8,padding:"10px 14px",fontSize:13}},
+          h("strong",null,order.title),
+          h("div",{style:{color:"#6b7280",marginTop:4}},
+            "Laukiama: ",h("strong",null,rem+" "+order.unit),
+            order.quantity_received>0&&h("span",{style:{marginLeft:8,color:"#9ca3af"}},"jau gauta: "+order.quantity_received)
+          ),
+          order.quantity>1&&h("div",{className:"progress-bar",style:{marginTop:8}},
+            h("div",{className:"progress-fill",style:{width:pct+"%",background:"#ca8a04"}})
+          )
+        ),
+        h(Field,{label:`Kiek vienetų gauta dabar? (max: ${rem})`},
+          h("input",{className:"field-input",type:"number",min:1,max:rem,step:"any",value:qty,onChange:e=>setQty(e.target.value)})
+        ),
+        h(Field,{label:"Faktinė kaina € (neprivaloma)"},
+          h("input",{className:"field-input",type:"number",step:"0.01",value:price,onChange:e=>setPrice(e.target.value),placeholder:"0.00"})
+        )
+      ),
+      h("div",{className:"modal-footer"},
+        h("button",{className:"btn-secondary",onClick:onClose},"Atšaukti"),
+        h("button",{className:"btn-primary",onClick:go,disabled:busy,style:{background:"#16a34a"}},busy?"...":"Patvirtinti")
+      )
+    )
+  );
+}
+
+// ── SupplierModal ─────────────────────────────────────────────────────
+function SupplierModal({supplier,onSave,onClose}){
+  const[f,setF]=useState({name:"",website:"",phone:"",notes:"",...supplier});
+  const[busy,setBusy]=useState(false);
+  const set=(k,v)=>setF(x=>({...x,[k]:v}));
+  const save=async()=>{if(!f.name.trim())return;setBusy(true);try{await onSave(f);}finally{setBusy(false);}};
+  return h("div",{className:"overlay",onClick:onClose},
+    h("div",{className:"modal",style:{maxWidth:400},onClick:e=>e.stopPropagation()},
+      h("div",{className:"modal-header"},
+        h("span",{className:"modal-title"},supplier?.id?"Redaguoti tiekėją":"Naujas tiekėjas"),
+        h("button",{className:"close-btn",onClick:onClose},"✕")
+      ),
+      h("div",{className:"modal-body"},
+        [["name","Pavadinimas *","text","Karnasch"],["website","Svetainė","url","https://..."],["phone","Tel. nr.","tel","+370 600 00000"]].map(([k,l,t,p])=>
+          h(Field,{key:k,label:l},h("input",{className:"field-input",type:t,value:f[k]||"",onChange:e=>set(k,e.target.value),placeholder:p}))
+        ),
+        h(Field,{label:"Pastabos"},h("textarea",{className:"field-input",style:{height:60,resize:"vertical"},value:f.notes||"",onChange:e=>set("notes",e.target.value)}))
+      ),
+      h("div",{className:"modal-footer"},
+        h("button",{className:"btn-secondary",onClick:onClose},"Atšaukti"),
+        h("button",{className:"btn-primary",onClick:save,disabled:busy},busy?"...":"Išsaugoti")
+      )
+    )
+  );
+}
+
+// ── Card ──────────────────────────────────────────────────────────────
+function Card({order,supplier,checked,onCheck,onEdit,onDelete,onMove,onReceive}){
+  const cat=CATS.find(c=>c.id===order.category);
+  const partial=order.quantity_received>0&&order.quantity_received<order.quantity;
+  const pct=order.quantity>0?(order.quantity_received/order.quantity)*100:0;
+  return h("div",{className:"card"},
+    h("div",{className:"card-top"},
+      h("input",{type:"checkbox",checked,onChange:()=>onCheck(order.id),style:{marginTop:3,cursor:"pointer",flexShrink:0,accentColor:"#111"}}),
+      h("span",{className:"card-title"},order.title),
+      h("div",{className:"card-actions"},
+        h("button",{className:"icon-btn",title:"Redaguoti",onClick:()=>onEdit(order)},"✏️"),
+        h("button",{className:"icon-btn",title:"Ištrinti",onClick:()=>onDelete(order.id)},"🗑")
+      )
+    ),
+    cat&&h("span",{className:"cat-badge",style:{color:cat.hex,borderColor:cat.hex+"55"}},cat.label),
+    h("div",{className:"card-meta",style:{marginBottom:partial?8:0}},
+      h("span",{className:"card-qty"},(partial?`${order.quantity_received}/${order.quantity}`:order.quantity)+" "+order.unit),
+      supplier&&h("span",{className:"card-supplier"},supplier.name)
+    ),
+    partial&&h("div",null,
+      h("div",{className:"progress-bar"},h("div",{className:"progress-fill",style:{width:pct+"%",background:"#ca8a04"}})),
+      h("span",{className:"progress-warn"},"⚠ Trūksta: "+(order.quantity-order.quantity_received)+" "+order.unit)
+    ),
+    (order.deadline||order.estimated_price)&&h("div",{className:"card-footer"},
+      order.deadline&&h("span",null,"📅 "+new Date(order.deadline).toLocaleDateString("lt-LT")),
+      order.estimated_price&&h("span",null,"💶 ~"+order.estimated_price+"€"+(order.actual_price?" → "+order.actual_price+"€":""))
+    ),
+    order.url&&h("a",{href:order.url,target:"_blank",rel:"noopener noreferrer",className:"card-url"},"🔗 "+order.url.replace(/^https?:\/\/(www\.)?/,"")),
+    order.notes&&h("p",{className:"card-notes"},order.notes),
+    order.status!=="gauta"&&h("button",{className:"card-action-btn",onClick:()=>order.status==="poreikis"?onMove(order):onReceive(order)},
+      order.status==="poreikis"?"→ Užsakyti":"→ Žymėti gautą"
+    )
+  );
+}
+
+// ── App ───────────────────────────────────────────────────────────────
+function App(){
+  const[orders,setOrders]=useState([]);
+  const[suppliers,setSuppliers]=useState([]);
+  const[loading,setLoading]=useState(true);
+  const[err,setErr]=useState(null);
+  const[view,setView]=useState("kanban");
+  const[catF,setCatF]=useState("all");
+  const[ordM,setOrdM]=useState(null);
+  const[recM,setRecM]=useState(null);
+  const[supM,setSupM]=useState(null);
+  const[sel,setSel]=useState(new Set());
+
+  const load=useCallback(async()=>{
+    try{
+      const[o,s]=await Promise.all([
+        q("GET","orders",null,"?select=*&order=created_at.desc"),
+        q("GET","suppliers",null,"?select=*&order=name"),
+      ]);
+      setOrders(o||[]);setSuppliers(s||[]);
+    }catch(e){setErr(e.message);}
+    finally{setLoading(false);}
+  },[]);
+
+  useEffect(()=>{load();},[load]);
+
+  const saveOrder=async(form)=>{
+    if(ordM?.order?.id)await q("PATCH","orders",form,`?id=eq.${ordM.order.id}`);
+    else await q("POST","orders",{...form,quantity_received:0});
+    setOrdM(null);await load();
+  };
+  const delOrder=async(id)=>{
+    if(!confirm("Ar tikrai ištrinti?"))return;
+    await q("DELETE","orders",null,`?id=eq.${id}`);
+    setOrders(o=>o.filter(x=>x.id!==id));
+    setSel(s=>{const n=new Set(s);n.delete(id);return n;});
+  };
+  const moveToOrdered=async(order)=>{
+    await q("PATCH","orders",{status:"uzsakyta",ordered_at:new Date().toISOString()},`?id=eq.${order.id}`);
+    await load();
+  };
+  const receiveQty=async(order,qty,price)=>{
+    const nr=order.quantity_received+qty;
+    const done=nr>=order.quantity;
+    await q("PATCH","orders",{quantity_received:nr,...(price!=null?{actual_price:price}:{}),...(done?{status:"gauta",received_at:new Date().toISOString()}:{})},`?id=eq.${order.id}`);
+    setRecM(null);await load();
+  };
+  const saveSupplier=async(form)=>{
+    if(supM?.supplier?.id)await q("PATCH","suppliers",form,`?id=eq.${supM.supplier.id}`);
+    else await q("POST","suppliers",form);
+    setSupM(null);await load();
+  };
+  const delSupplier=async(id)=>{
+    if(!confirm("Ar tikrai ištrinti?"))return;
+    await q("DELETE","suppliers",null,`?id=eq.${id}`);
+    setSuppliers(s=>s.filter(x=>x.id!==id));
+  };
+  const toggle=(id)=>setSel(s=>{const n=new Set(s);n.has(id)?n.delete(id):n.add(id);return n;});
+
+  const printPDF=()=>{
+    const items=orders.filter(o=>sel.has(o.id));
+    if(!items.length){alert("Nepasirinkta jokių užsakymų");return;}
+    const stl={poreikis:"Poreikis",uzsakyta:"Užsakyta",gauta:"Gauta"};
+    const rows=items.map(o=>{
+      const s=suppliers.find(x=>x.id===o.supplier_id);
+      const c=CATS.find(x=>x.id===o.category);
+      return`<tr><td>${o.title}</td><td>${c?.label||""}</td><td>${s?.name||""}</td><td>${o.quantity_received>0?o.quantity_received+"/":""}${o.quantity} ${o.unit}</td><td>${stl[o.status]||""}</td><td>${o.estimated_price?o.estimated_price+"€":""}${o.actual_price?" ("+o.actual_price+"€)":""}</td><td>${o.deadline?new Date(o.deadline).toLocaleDateString("lt-LT"):""}</td><td>${o.notes||""}</td></tr>`;
+    }).join("");
+    const w=window.open("","_blank");
+    w.document.write(`<!DOCTYPE html><html><head><title>Užsakymai</title><meta charset="UTF-8"><style>body{font-family:Arial;padding:20px;font-size:12px}h2{font-size:15px;margin:0 0 14px}table{width:100%;border-collapse:collapse}th{background:#f0f0f0;padding:7px 6px;text-align:left;border:1px solid #ccc;font-size:11px}td{padding:5px 6px;border:1px solid #e0e0e0;vertical-align:top}tr:nth-child(even)td{background:#fafafa}@media print{body{padding:0}}</style></head><body><h2>Užsakymai · ${new Date().toLocaleDateString("lt-LT")}</h2><table><thead><tr><th>Pavadinimas</th><th>Kategorija</th><th>Tiekėjas</th><th>Kiekis</th><th>Statusas</th><th>Kaina</th><th>Terminas</th><th>Pastabos</th></tr></thead><tbody>${rows}</tbody></table><script>setTimeout(()=>window.print(),300)<\/script></body></html>`);
+    w.document.close();
+  };
+
+  const cols={
+    poreikis:{label:"Poreikis",c:"#2563eb",items:(catF==="all"?orders:orders.filter(o=>o.category===catF)).filter(o=>o.status==="poreikis")},
+    uzsakyta:{label:"Užsakyta",c:"#ca8a04",items:(catF==="all"?orders:orders.filter(o=>o.category===catF)).filter(o=>o.status==="uzsakyta")},
+    gauta:{label:"Gauta",c:"#16a34a",items:(catF==="all"?orders:orders.filter(o=>o.category===catF)).filter(o=>o.status==="gauta")},
+  };
+
+  if(loading)return h("div",{className:"loading"},"Jungiamasi prie Supabase...");
+  if(err)return h("div",{className:"error-box"},h("strong",null,"Klaida:"),h("br"),err,h("br"),h("br"),h("small",{style:{color:"#9ca3af"}},"Patikrink ar paleidai SQL schemą Supabase SQL Editor lange."));
+
+  return h("div",null,
+    h("h2",{className:"sr-only"},"CNC užsakymų sistema"),
+
+    // Header
+    h("div",{className:"header"},
+      h("div",{className:"header-inner"},
+        h("div",{className:"logo"},
+          h("span",{className:"logo-icon"},"⚙️"),
+          h("span",{className:"logo-text"},"CNC užsakymai")
+        ),
+        h("div",{className:"tabs"},
+          h("button",{className:"tab"+(view==="kanban"?" active":""),onClick:()=>setView("kanban")},"📋 Užsakymai"),
+          h("button",{className:"tab"+(view==="suppliers"?" active":""),onClick:()=>setView("suppliers")},"🏭 Tiekėjai")
+        )
+      )
+    ),
+
+    // Kanban view
+    view==="kanban"&&h("div",null,
+      h("div",{className:"toolbar"},
+        h("div",{className:"chip-row"},
+          h("button",{className:"chip"+(catF==="all"?" active":""),onClick:()=>setCatF("all")},"Visi"),
+          CATS.map(c=>h("button",{key:c.id,className:"chip",onClick:()=>setCatF(c.id),style:catF===c.id?{borderColor:c.hex,color:c.hex,background:c.hex+"15"}:{}},c.label))
+        ),
+        h("div",{className:"btn-row"},
+          sel.size>0&&h("button",{className:"btn-secondary",onClick:printPDF},"🖨 PDF ("+sel.size+")"),
+          h("button",{className:"btn-primary",onClick:()=>setOrdM({mode:"add"})},"+ Pridėti")
+        )
+      ),
+      h("div",{className:"kanban"},
+        Object.entries(cols).map(([key,col])=>
+          h("div",{key},
+            h("div",{className:"col-header"},
+              h("div",{className:"col-title"},
+                h("div",{className:"col-dot",style:{background:col.c}}),
+                h("span",{style:{color:col.c}},col.label)
+              ),
+              h("span",{className:"col-count"},col.items.length)
+            ),
+            h("div",{className:"col-body"},
+              col.items.map(o=>h(Card,{key:o.id,order:o,supplier:suppliers.find(s=>s.id===o.supplier_id),checked:sel.has(o.id),onCheck:toggle,onEdit:o=>setOrdM({mode:"edit",order:o}),onDelete:delOrder,onMove:moveToOrdered,onReceive:o=>setRecM(o)})),
+              col.items.length===0&&h("div",{className:"col-empty"},"Nėra")
+            )
+          )
+        )
+      )
+    ),
+
+    // Suppliers view
+    view==="suppliers"&&h("div",null,
+      h("div",{style:{maxWidth:1100,margin:"0 auto",padding:"16px 20px 0",display:"flex",justifyContent:"flex-end"}},
+        h("button",{className:"btn-primary",onClick:()=>setSupM({mode:"add"})},"+ Tiekėjas")
+      ),
+      h("div",{className:"suppliers-grid"},
+        suppliers.map(s=>
+          h("div",{key:s.id,className:"supplier-card"},
+            h("div",{className:"supplier-header"},
+              h("div",{style:{display:"flex",alignItems:"center",gap:9}},
+                h("div",{className:"supplier-icon"},"🏭"),
+                h("span",{style:{fontWeight:600,fontSize:14}},s.name)
+              ),
+              h("div",{style:{display:"flex",gap:2}},
+                h("button",{className:"icon-btn",onClick:()=>setSupM({mode:"edit",supplier:s})},"✏️"),
+                h("button",{className:"icon-btn",onClick:()=>delSupplier(s.id)},"🗑")
+              )
+            ),
+            h("div",{className:"supplier-info"},
+              s.phone&&h("span",null,"📞 "+s.phone),
+              s.website&&h("a",{href:s.website,target:"_blank",rel:"noopener noreferrer",style:{color:"#2563eb",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}},"🌐 "+s.website.replace(/^https?:\/\/(www\.)?/,"")),
+              s.notes&&h("span",{className:"supplier-divider",style:{color:"#9ca3af"}},s.notes),
+              h("span",{className:"supplier-divider",style:{color:"#9ca3af",fontSize:11}},"📦 "+orders.filter(o=>o.supplier_id===s.id).length+" užsakymų")
+            )
+          )
+        ),
+        suppliers.length===0&&h("div",{style:{color:"#9ca3af",fontSize:13,padding:"20px 0"}},"Dar nėra tiekėjų.")
+      )
+    ),
+
+    ordM&&h(OrderModal,{order:ordM.order,suppliers,onSave:saveOrder,onClose:()=>setOrdM(null)}),
+    recM&&h(ReceiveModal,{order:recM,onReceive:receiveQty,onClose:()=>setRecM(null)}),
+    supM&&h(SupplierModal,{supplier:supM.supplier,onSave:saveSupplier,onClose:()=>setSupM(null)})
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(h(App,null));
+</script>
+</body>
+</html>
