@@ -135,7 +135,7 @@ function OrderModal({order,suppliers,onSave,onClose}){
   const save=async()=>{
     if(!f.title.trim())return;
     setBusy(true);
-    try{await onSave({...f,quantity:+f.quantity,estimated_price:f.estimated_price?+f.estimated_price:null,supplier_id:f.supplier_id||null});}
+    try{await onSave({...f,quantity:+f.quantity,estimated_price:f.estimated_price?+f.estimated_price:null,actual_price:f.actual_price?+f.actual_price:null,supplier_id:f.supplier_id||null,deadline:f.deadline||null,url:f.url||null,notes:f.notes||null});}
     catch(e){alert("Klaida: "+e.message);}
     finally{setBusy(false);}
   };
@@ -241,7 +241,7 @@ function SupplierModal({supplier,onSave,onClose}){
   const[f,setF]=useState({name:"",website:"",phone:"",notes:"",...supplier});
   const[busy,setBusy]=useState(false);
   const set=(k,v)=>setF(x=>({...x,[k]:v}));
-  const save=async()=>{if(!f.name.trim())return;setBusy(true);try{await onSave(f);}finally{setBusy(false);}};
+  const save=async()=>{if(!f.name.trim())return;setBusy(true);try{await onSave(f);}catch(e){alert("Klaida: "+e.message);}finally{setBusy(false);}};
   return h("div",{className:"overlay",onClick:onClose},
     h("div",{className:"modal",style:{maxWidth:400},onClick:e=>e.stopPropagation()},
       h("div",{className:"modal-header"},
@@ -324,8 +324,9 @@ function App(){
   useEffect(()=>{load();},[load]);
 
   const saveOrder=async(form)=>{
-    if(ordM?.order?.id)await q("PATCH","orders",form,`?id=eq.${ordM.order.id}`);
-    else await q("POST","orders",{...form,quantity_received:0});
+    const clean={...form,deadline:form.deadline||null,url:form.url||null,notes:form.notes||null};
+    if(ordM?.order?.id)await q("PATCH","orders",clean,`?id=eq.${ordM.order.id}`);
+    else await q("POST","orders",{...clean,quantity_received:0});
     setOrdM(null);await load();
   };
   const delOrder=async(id)=>{
