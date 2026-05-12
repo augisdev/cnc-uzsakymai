@@ -16,18 +16,13 @@ a{text-decoration:none}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:2px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-
-/* Header */
 .header{background:#fff;border-bottom:1px solid #e5e7eb;padding:0 20px;position:sticky;top:0;z-index:10}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:52px}
 .logo{display:flex;align-items:center;gap:9px}
-.logo-icon{font-size:20px}
 .logo-text{font-weight:600;font-size:15px}
 .tabs{display:flex;gap:2px}
-.tab{padding:6px 12px;border:none;border-radius:8px;background:transparent;color:#6b7280;cursor:pointer;font-size:13px;font-weight:400;transition:all .15s}
-.tab.active{background:#f3f4f6;color:#111}
-
-/* Toolbar */
+.tab{padding:6px 12px;border:none;border-radius:8px;background:transparent;color:#6b7280;cursor:pointer;font-size:13px;transition:all .15s}
+.tab.active{background:#f3f4f6;color:#111;font-weight:500}
 .toolbar{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .chip-row{display:flex;gap:6px;flex-wrap:wrap}
 .chip{padding:4px 12px;border-radius:20px;border:1px solid #e5e7eb;background:transparent;color:#6b7280;cursor:pointer;font-size:12px;transition:all .15s}
@@ -35,18 +30,14 @@ a{text-decoration:none}
 .btn-row{display:flex;gap:8px;align-items:center}
 .btn-primary{padding:7px 16px;border:none;border-radius:8px;background:#111;color:#fff;cursor:pointer;font-size:13px;font-weight:500;display:flex;align-items:center;gap:5px}
 .btn-secondary{padding:7px 14px;border:1px solid #d1d5db;border-radius:8px;background:transparent;color:#6b7280;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:5px}
-
-/* Kanban */
 .kanban{max-width:1100px;margin:0 auto;padding:0 20px 40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-@media(max-width:640px){.kanban{grid-template-columns:1fr;padding:0 12px 40px}.toolbar{padding:10px 12px}.header-inner{padding:0}}
+@media(max-width:640px){.kanban{grid-template-columns:1fr;padding:0 12px 40px}.toolbar{padding:10px 12px}}
 .col-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;padding:0 2px}
 .col-title{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em}
 .col-dot{width:7px;height:7px;border-radius:50%}
 .col-count{font-size:11px;background:#f3f4f6;color:#9ca3af;border-radius:10px;padding:1px 8px;border:1px solid #e5e7eb}
 .col-body{display:flex;flex-direction:column;gap:8px}
 .col-empty{border:1px dashed #e5e7eb;border-radius:10px;padding:24px 0;text-align:center;color:#d1d5db;font-size:12px}
-
-/* Card */
 .card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px}
 .card-top{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
 .card-title{font-size:14px;font-weight:500;color:#111;line-height:1.35;flex:1}
@@ -65,8 +56,6 @@ a{text-decoration:none}
 .card-notes{font-size:11px;color:#9ca3af;margin-top:6px;border-top:1px solid #f3f4f6;padding-top:6px}
 .card-action-btn{margin-top:10px;width:100%;padding:6px;border:1px solid #e5e7eb;border-radius:8px;background:transparent;color:#6b7280;cursor:pointer;font-size:12px;transition:all .15s}
 .card-action-btn:hover{border-color:#111;color:#111}
-
-/* Modal */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px}
 .modal{background:#fff;border-radius:12px;width:100%;max-width:480px;max-height:92vh;overflow-y:auto;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.15)}
 .modal-header{padding:15px 20px;border-bottom:1px solid #f3f4f6;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
@@ -81,16 +70,16 @@ a{text-decoration:none}
 .grid-2-1{display:grid;grid-template-columns:2fr 1fr;gap:10px}
 .cat-btns{display:flex;gap:6px;flex-wrap:wrap}
 .cat-btn{padding:4px 12px;border-radius:20px;border:1px solid #e5e7eb;background:transparent;cursor:pointer;font-size:12px;transition:all .15s}
-
-/* Suppliers view */
-.suppliers-grid{max-width:1100px;margin:0 auto;padding:16px 20px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-.supplier-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px}
-.supplier-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-.supplier-icon{width:34px;height:34px;border-radius:8px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.supplier-info{display:flex;flex-direction:column;gap:5px;font-size:12px;color:#6b7280}
-.supplier-divider{border-top:1px solid #f3f4f6;padding-top:6px;margin-top:2px}
-
-/* States */
+.page-grid{max-width:1100px;margin:0 auto;padding:16px 20px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.item-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px}
+.item-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.item-icon{width:34px;height:34px;border-radius:8px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.item-info{display:flex;flex-direction:column;gap:5px;font-size:12px;color:#6b7280}
+.item-divider{border-top:1px solid #f3f4f6;padding-top:6px;margin-top:2px}
+.color-swatches{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.swatch{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s}
+.swatch.active{border-color:#111;transform:scale(1.15)}
+.page-header{max-width:1100px;margin:0 auto;padding:16px 20px 0;display:flex;justify-content:flex-end}
 .loading{padding:60px;text-align:center;color:#9ca3af;font-size:13px}
 .error-box{padding:32px;color:#dc2626;font-size:13px;line-height:1.6}
 </style>
@@ -101,114 +90,166 @@ a{text-decoration:none}
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
 <script>
 const{useState,useEffect,useCallback,createElement:h}=React;
-
 const SB="https://llnjhrpvvjzjedotpkud.supabase.co";
 const SK="sb_publishable_Umsju_cGG4PmUYIzSGxblg_l64CP9dY";
-const H={apikey:SK,Authorization:`Bearer ${SK}`,"Content-Type":"application/json",Prefer:"return=representation"};
+const H={apikey:SK,Authorization:"Bearer "+SK,"Content-Type":"application/json",Prefer:"return=representation"};
+const UNITS=["vnt","m","kg","l","m\xB2","kompl.","pak."];
+const COLORS=["#2563eb","#d97706","#16a34a","#6b7280","#dc2626","#7c3aed","#0891b2","#be185d","#b45309","#15803d","#9333ea","#0f766e"];
 
-async function q(method,table,body,qs=""){
-  const r=await fetch(`${SB}/rest/v1/${table}${qs}`,{method,headers:H,body:body?JSON.stringify(body):null});
+async function q(method,table,body,qs){
+  qs=qs||"";
+  var r=await fetch(SB+"/rest/v1/"+table+qs,{method:method,headers:H,body:body?JSON.stringify(body):null});
   if(!r.ok)throw new Error(await r.text());
-  const t=await r.text();return t?JSON.parse(t):null;
+  var t=await r.text();return t?JSON.parse(t):null;
 }
 
-const CATS=[
-  {id:"cnc",label:"CNC dalys",hex:"#2563eb"},
-  {id:"irankiai",label:"Įrankiai",hex:"#d97706"},
-  {id:"ekspl",label:"Eksploatacinės",hex:"#16a34a"},
-  {id:"kita",label:"Kita",hex:"#6b7280"},
-];
-const UNITS=["vnt","m","kg","l","m²","kompl.","pak."];
-
-// ── Field helpers ─────────────────────────────────────────────────────
-function Field({label,children}){
-  return h("div",null,h("label",{className:"field-label"},label),children);
+function Field(props){
+  return h("div",null,h("label",{className:"field-label"},props.label),props.children);
 }
 
-// ── OrderModal ────────────────────────────────────────────────────────
-function OrderModal({order,suppliers,onSave,onClose}){
-  const isEdit=!!order?.id;
-  const def={title:"",category:"cnc",supplier_id:"",quantity:1,unit:"vnt",estimated_price:"",url:"",deadline:"",notes:"",status:"poreikis"};
-  const[f,setF]=useState({...def,...(order?{...order,supplier_id:order.supplier_id||"",estimated_price:order.estimated_price||"",url:order.url||"",deadline:order.deadline||"",notes:order.notes||""}:{})});
-  const[busy,setBusy]=useState(false);
-  const set=(k,v)=>setF(x=>({...x,[k]:v}));
-  const save=async()=>{
-    if(!f.title.trim())return;
+function CategoryModal(props){
+  var cat=props.cat;
+  var onSave=props.onSave;
+  var onClose=props.onClose;
+  var init={name:"",hex:"#2563eb",sort_order:0};
+  if(cat){init=Object.assign({},init,cat);}
+  var fs=useState(init);
+  var f=fs[0];var setF=fs[1];
+  var bs=useState(false);var busy=bs[0];var setBusy=bs[1];
+  function set(k,v){setF(function(x){var n=Object.assign({},x);n[k]=v;return n;});}
+  async function save(){
+    if(!f.name.trim())return;
     setBusy(true);
-    try{await onSave({...f,quantity:+f.quantity,estimated_price:f.estimated_price?+f.estimated_price:null,actual_price:f.actual_price?+f.actual_price:null,supplier_id:f.supplier_id||null,deadline:f.deadline||null,url:f.url||null,notes:f.notes||null});}
+    try{await onSave(f);}
     catch(e){alert("Klaida: "+e.message);}
     finally{setBusy(false);}
-  };
+  }
   return h("div",{className:"overlay",onClick:onClose},
-    h("div",{className:"modal",onClick:e=>e.stopPropagation()},
+    h("div",{className:"modal",style:{maxWidth:400},onClick:function(e){e.stopPropagation();}},
       h("div",{className:"modal-header"},
-        h("span",{className:"modal-title"},isEdit?"Redaguoti užsakymą":"Naujas užsakymas"),
-        h("button",{className:"close-btn",onClick:onClose},"✕")
+        h("span",{className:"modal-title"},cat&&cat.id?"Redaguoti kategoriją":"Nauja kategorija"),
+        h("button",{className:"close-btn",onClick:onClose},"\u2715")
       ),
       h("div",{className:"modal-body"},
-        h(Field,{label:"Pavadinimas *"},h("input",{className:"field-input",value:f.title,onChange:e=>set("title",e.target.value),placeholder:"pvz. Freza D6 Karnasch",autoFocus:true})),
-        h(Field,{label:"Kategorija"},
-          h("div",{className:"cat-btns"},
-            CATS.map(c=>h("button",{key:c.id,className:"cat-btn",onClick:()=>set("category",c.id),style:{borderColor:f.category===c.id?c.hex:"#e5e7eb",background:f.category===c.id?c.hex+"20":"transparent",color:f.category===c.id?c.hex:"#6b7280"}},c.label))
-          )
+        h(Field,{label:"Pavadinimas *"},
+          h("input",{className:"field-input",value:f.name,onChange:function(e){set("name",e.target.value);},placeholder:"pvz. Guoliai",autoFocus:true})
         ),
-        h("div",{className:"grid-2"},
-          h(Field,{label:"Tiekėjas"},
-            h("select",{className:"field-input",value:f.supplier_id,onChange:e=>set("supplier_id",e.target.value)},
-              h("option",{value:""},"— nepasirinkta —"),
-              suppliers.map(s=>h("option",{key:s.id,value:s.id},s.name))
-            )
+        h(Field,{label:"Eili\u0117s Nr. (rikiavimui)"},
+          h("input",{className:"field-input",type:"number",value:f.sort_order,onChange:function(e){set("sort_order",+e.target.value);}})
+        ),
+        h("div",null,
+          h("label",{className:"field-label"},"Spalva"),
+          h("div",{style:{display:"flex",alignItems:"center",gap:10,marginTop:4}},
+            h("div",{style:{width:32,height:32,borderRadius:8,background:f.hex,border:"1px solid #e5e7eb",flexShrink:0}}),
+            h("input",{className:"field-input",value:f.hex,onChange:function(e){set("hex",e.target.value);},style:{fontFamily:"monospace",flex:1,width:"auto"}})
           ),
-          h(Field,{label:"Statusas"},
-            h("select",{className:"field-input",value:f.status,onChange:e=>set("status",e.target.value)},
-              h("option",{value:"poreikis"},"Poreikis"),
-              h("option",{value:"uzsakyta"},"Užsakyta"),
-              h("option",{value:"gauta"},"Gauta")
-            )
+          h("div",{className:"color-swatches"},
+            COLORS.map(function(c){
+              return h("div",{key:c,className:"swatch"+(f.hex===c?" active":""),style:{background:c},onClick:function(){set("hex",c);}});
+            })
           )
-        ),
-        h("div",{className:"grid-2-1"},
-          h(Field,{label:"Kiekis *"},h("input",{className:"field-input",type:"number",min:"0.01",step:"any",value:f.quantity,onChange:e=>set("quantity",e.target.value)})),
-          h(Field,{label:"Vnt."},
-            h("select",{className:"field-input",value:f.unit,onChange:e=>set("unit",e.target.value)},
-              UNITS.map(u=>h("option",{key:u},u))
-            )
-          )
-        ),
-        h("div",{className:"grid-2"},
-          h(Field,{label:"Numatoma kaina €"},h("input",{className:"field-input",type:"number",step:"0.01",value:f.estimated_price,onChange:e=>set("estimated_price",e.target.value),placeholder:"0.00"})),
-          h(Field,{label:"Terminas"},h("input",{className:"field-input",type:"date",value:f.deadline,onChange:e=>set("deadline",e.target.value)}))
-        ),
-        h(Field,{label:"Nuoroda (URL)"},h("input",{className:"field-input",value:f.url,onChange:e=>set("url",e.target.value),placeholder:"https://..."})),
-        h(Field,{label:"Pastabos"},h("textarea",{className:"field-input",style:{height:60,resize:"vertical"},value:f.notes,onChange:e=>set("notes",e.target.value)}))
+        )
       ),
       h("div",{className:"modal-footer"},
-        h("button",{className:"btn-secondary",onClick:onClose},"Atšaukti"),
-        h("button",{className:"btn-primary",onClick:save,disabled:busy},busy?"Saugoma...":"Išsaugoti")
+        h("button",{className:"btn-secondary",onClick:onClose},"At\u0161aukti"),
+        h("button",{className:"btn-primary",onClick:save,disabled:busy},busy?"...":"I\u0161saugoti")
       )
     )
   );
 }
 
-// ── ReceiveModal ──────────────────────────────────────────────────────
-function ReceiveModal({order,onReceive,onClose}){
-  const rem=order.quantity-order.quantity_received;
-  const[qty,setQty]=useState(rem);
-  const[price,setPrice]=useState(order.actual_price||"");
-  const[busy,setBusy]=useState(false);
-  const go=async()=>{
-    const n=Math.min(+qty,rem);if(n<=0)return;
+function OrderModal(props){
+  var order=props.order;var suppliers=props.suppliers;var cats=props.cats;var onSave=props.onSave;var onClose=props.onClose;
+  var isEdit=!!(order&&order.id);
+  var defCat=cats.length>0?cats[0].id:"";
+  var def={title:"",category:defCat,supplier_id:"",quantity:1,unit:"vnt",estimated_price:"",url:"",deadline:"",notes:"",status:"poreikis"};
+  var init=def;
+  if(order){init=Object.assign({},def,order,{supplier_id:order.supplier_id||"",estimated_price:order.estimated_price||"",url:order.url||"",deadline:order.deadline||"",notes:order.notes||""});}
+  var fs=useState(init);var f=fs[0];var setF=fs[1];
+  var bs=useState(false);var busy=bs[0];var setBusy=bs[1];
+  function set(k,v){setF(function(x){var n=Object.assign({},x);n[k]=v;return n;});}
+  async function save(){
+    if(!f.title.trim())return;
+    setBusy(true);
+    try{
+      var clean=Object.assign({},f,{quantity:+f.quantity,estimated_price:f.estimated_price?+f.estimated_price:null,actual_price:f.actual_price?+f.actual_price:null,supplier_id:f.supplier_id||null,deadline:f.deadline||null,url:f.url||null,notes:f.notes||null});
+      await onSave(clean);
+    }catch(e){alert("Klaida: "+e.message);}
+    finally{setBusy(false);}
+  }
+  return h("div",{className:"overlay",onClick:onClose},
+    h("div",{className:"modal",onClick:function(e){e.stopPropagation();}},
+      h("div",{className:"modal-header"},
+        h("span",{className:"modal-title"},isEdit?"Redaguoti u\u017esakym\u0105":"Naujas u\u017esakymas"),
+        h("button",{className:"close-btn",onClick:onClose},"\u2715")
+      ),
+      h("div",{className:"modal-body"},
+        h(Field,{label:"Pavadinimas *"},
+          h("input",{className:"field-input",value:f.title,onChange:function(e){set("title",e.target.value);},placeholder:"pvz. Freza D6 Karnasch",autoFocus:true})
+        ),
+        h(Field,{label:"Kategorija"},
+          h("div",{className:"cat-btns"},
+            cats.map(function(c){
+              return h("button",{key:c.id,className:"cat-btn",onClick:function(){set("category",c.id);},style:{borderColor:f.category===c.id?c.hex:"#e5e7eb",background:f.category===c.id?c.hex+"20":"transparent",color:f.category===c.id?c.hex:"#6b7280"}},c.name);
+            })
+          )
+        ),
+        h("div",{className:"grid-2"},
+          h(Field,{label:"Tiek\u0117jas"},
+            h("select",{className:"field-input",value:f.supplier_id,onChange:function(e){set("supplier_id",e.target.value);}},
+              h("option",{value:""},"\u2014 nepasirinkta \u2014"),
+              suppliers.map(function(s){return h("option",{key:s.id,value:s.id},s.name);})
+            )
+          ),
+          h(Field,{label:"Statusas"},
+            h("select",{className:"field-input",value:f.status,onChange:function(e){set("status",e.target.value);}},
+              h("option",{value:"poreikis"},"Poreikis"),
+              h("option",{value:"uzsakyta"},"\u017dsakyta"),
+              h("option",{value:"gauta"},"Gauta")
+            )
+          )
+        ),
+        h("div",{className:"grid-2-1"},
+          h(Field,{label:"Kiekis *"},h("input",{className:"field-input",type:"number",min:"0.01",step:"any",value:f.quantity,onChange:function(e){set("quantity",e.target.value);}})),
+          h(Field,{label:"Vnt."},
+            h("select",{className:"field-input",value:f.unit,onChange:function(e){set("unit",e.target.value);}},
+              UNITS.map(function(u){return h("option",{key:u},u);})
+            )
+          )
+        ),
+        h("div",{className:"grid-2"},
+          h(Field,{label:"Numatoma kaina \u20ac"},h("input",{className:"field-input",type:"number",step:"0.01",value:f.estimated_price,onChange:function(e){set("estimated_price",e.target.value);},placeholder:"0.00"})),
+          h(Field,{label:"Terminas"},h("input",{className:"field-input",type:"date",value:f.deadline,onChange:function(e){set("deadline",e.target.value);}}))
+        ),
+        h(Field,{label:"Nuoroda (URL)"},h("input",{className:"field-input",value:f.url,onChange:function(e){set("url",e.target.value);},placeholder:"https://..."})),
+        h(Field,{label:"Pastabos"},h("textarea",{className:"field-input",style:{height:60,resize:"vertical"},value:f.notes,onChange:function(e){set("notes",e.target.value);}}))
+      ),
+      h("div",{className:"modal-footer"},
+        h("button",{className:"btn-secondary",onClick:onClose},"At\u0161aukti"),
+        h("button",{className:"btn-primary",onClick:save,disabled:busy},busy?"Saugoma...":"I\u0161saugoti")
+      )
+    )
+  );
+}
+
+function ReceiveModal(props){
+  var order=props.order;var onReceive=props.onReceive;var onClose=props.onClose;
+  var rem=order.quantity-order.quantity_received;
+  var qs=useState(rem);var qty=qs[0];var setQty=qs[1];
+  var ps=useState(order.actual_price||"");var price=ps[0];var setPrice=ps[1];
+  var bs=useState(false);var busy=bs[0];var setBusy=bs[1];
+  async function go(){
+    var n=Math.min(+qty,rem);if(n<=0)return;
     setBusy(true);
     try{await onReceive(order,n,price?+price:null);}
     catch(e){alert("Klaida: "+e.message);}
     finally{setBusy(false);}
-  };
-  const pct=order.quantity>0?(order.quantity_received/order.quantity)*100:0;
+  }
   return h("div",{className:"overlay",onClick:onClose},
-    h("div",{className:"modal",style:{maxWidth:380},onClick:e=>e.stopPropagation()},
+    h("div",{className:"modal",style:{maxWidth:380},onClick:function(e){e.stopPropagation();}},
       h("div",{className:"modal-header"},
-        h("span",{className:"modal-title"},"Žymėti gautą"),
-        h("button",{className:"close-btn",onClick:onClose},"✕")
+        h("span",{className:"modal-title"},"\u017dym\u0117ti gaut\u0105"),
+        h("button",{className:"close-btn",onClick:onClose},"\u2715")
       ),
       h("div",{className:"modal-body"},
         h("div",{style:{background:"#f9fafb",borderRadius:8,padding:"10px 14px",fontSize:13}},
@@ -218,200 +259,227 @@ function ReceiveModal({order,onReceive,onClose}){
             order.quantity_received>0&&h("span",{style:{marginLeft:8,color:"#9ca3af"}},"jau gauta: "+order.quantity_received)
           ),
           order.quantity>1&&h("div",{className:"progress-bar",style:{marginTop:8}},
-            h("div",{className:"progress-fill",style:{width:pct+"%",background:"#ca8a04"}})
+            h("div",{className:"progress-fill",style:{width:(order.quantity_received/order.quantity*100)+"%",background:"#ca8a04"}})
           )
         ),
-        h(Field,{label:`Kiek vienetų gauta dabar? (max: ${rem})`},
-          h("input",{className:"field-input",type:"number",min:1,max:rem,step:"any",value:qty,onChange:e=>setQty(e.target.value)})
+        h(Field,{label:"Kiek vienetu\u0173 gauta dabar? (max: "+rem+")"},
+          h("input",{className:"field-input",type:"number",min:1,max:rem,step:"any",value:qty,onChange:function(e){setQty(e.target.value);}})
         ),
-        h(Field,{label:"Faktinė kaina € (neprivaloma)"},
-          h("input",{className:"field-input",type:"number",step:"0.01",value:price,onChange:e=>setPrice(e.target.value),placeholder:"0.00"})
+        h(Field,{label:"Faktine\u0307 kaina \u20ac (neprivaloma)"},
+          h("input",{className:"field-input",type:"number",step:"0.01",value:price,onChange:function(e){setPrice(e.target.value);},placeholder:"0.00"})
         )
       ),
       h("div",{className:"modal-footer"},
-        h("button",{className:"btn-secondary",onClick:onClose},"Atšaukti"),
+        h("button",{className:"btn-secondary",onClick:onClose},"At\u0161aukti"),
         h("button",{className:"btn-primary",onClick:go,disabled:busy,style:{background:"#16a34a"}},busy?"...":"Patvirtinti")
       )
     )
   );
 }
 
-// ── SupplierModal ─────────────────────────────────────────────────────
-function SupplierModal({supplier,onSave,onClose}){
-  const[f,setF]=useState({name:"",website:"",phone:"",notes:"",...supplier});
-  const[busy,setBusy]=useState(false);
-  const set=(k,v)=>setF(x=>({...x,[k]:v}));
-  const save=async()=>{if(!f.name.trim())return;setBusy(true);try{await onSave(f);}catch(e){alert("Klaida: "+e.message);}finally{setBusy(false);}};
+function SupplierModal(props){
+  var supplier=props.supplier;var onSave=props.onSave;var onClose=props.onClose;
+  var init={name:"",website:"",phone:"",notes:""};
+  if(supplier){init=Object.assign({},init,supplier);}
+  var fs=useState(init);var f=fs[0];var setF=fs[1];
+  var bs=useState(false);var busy=bs[0];var setBusy=bs[1];
+  function set(k,v){setF(function(x){var n=Object.assign({},x);n[k]=v;return n;});}
+  async function save(){
+    if(!f.name.trim())return;
+    setBusy(true);
+    try{await onSave(f);}
+    catch(e){alert("Klaida: "+e.message);}
+    finally{setBusy(false);}
+  }
   return h("div",{className:"overlay",onClick:onClose},
-    h("div",{className:"modal",style:{maxWidth:400},onClick:e=>e.stopPropagation()},
+    h("div",{className:"modal",style:{maxWidth:400},onClick:function(e){e.stopPropagation();}},
       h("div",{className:"modal-header"},
-        h("span",{className:"modal-title"},supplier?.id?"Redaguoti tiekėją":"Naujas tiekėjas"),
-        h("button",{className:"close-btn",onClick:onClose},"✕")
+        h("span",{className:"modal-title"},supplier&&supplier.id?"Redaguoti tiek\u0117j\u0105":"Naujas tiek\u0117jas"),
+        h("button",{className:"close-btn",onClick:onClose},"\u2715")
       ),
       h("div",{className:"modal-body"},
-        [["name","Pavadinimas *","text","Karnasch"],["website","Svetainė","url","https://..."],["phone","Tel. nr.","tel","+370 600 00000"]].map(([k,l,t,p])=>
-          h(Field,{key:k,label:l},h("input",{className:"field-input",type:t,value:f[k]||"",onChange:e=>set(k,e.target.value),placeholder:p}))
-        ),
-        h(Field,{label:"Pastabos"},h("textarea",{className:"field-input",style:{height:60,resize:"vertical"},value:f.notes||"",onChange:e=>set("notes",e.target.value)}))
+        h(Field,{label:"Pavadinimas *"},h("input",{className:"field-input",type:"text",value:f.name||"",onChange:function(e){set("name",e.target.value);},placeholder:"Karnasch"})),
+        h(Field,{label:"Svetain\u0117"},h("input",{className:"field-input",type:"url",value:f.website||"",onChange:function(e){set("website",e.target.value);},placeholder:"https://..."})),
+        h(Field,{label:"Tel. nr."},h("input",{className:"field-input",type:"tel",value:f.phone||"",onChange:function(e){set("phone",e.target.value);},placeholder:"+370 600 00000"})),
+        h(Field,{label:"Pastabos"},h("textarea",{className:"field-input",style:{height:60,resize:"vertical"},value:f.notes||"",onChange:function(e){set("notes",e.target.value);}}))
       ),
       h("div",{className:"modal-footer"},
-        h("button",{className:"btn-secondary",onClick:onClose},"Atšaukti"),
-        h("button",{className:"btn-primary",onClick:save,disabled:busy},busy?"...":"Išsaugoti")
+        h("button",{className:"btn-secondary",onClick:onClose},"At\u0161aukti"),
+        h("button",{className:"btn-primary",onClick:save,disabled:busy},busy?"...":"I\u0161saugoti")
       )
     )
   );
 }
 
-// ── Card ──────────────────────────────────────────────────────────────
-function Card({order,supplier,checked,onCheck,onEdit,onDelete,onMove,onReceive}){
-  const cat=CATS.find(c=>c.id===order.category);
-  const partial=order.quantity_received>0&&order.quantity_received<order.quantity;
-  const pct=order.quantity>0?(order.quantity_received/order.quantity)*100:0;
+function Card(props){
+  var order=props.order;var supplier=props.supplier;var cat=props.cat;
+  var checked=props.checked;var onCheck=props.onCheck;
+  var onEdit=props.onEdit;var onDelete=props.onDelete;var onMove=props.onMove;var onReceive=props.onReceive;
+  var partial=order.quantity_received>0&&order.quantity_received<order.quantity;
+  var pct=order.quantity>0?(order.quantity_received/order.quantity)*100:0;
   return h("div",{className:"card"},
     h("div",{className:"card-top"},
-      h("input",{type:"checkbox",checked,onChange:()=>onCheck(order.id),style:{marginTop:3,cursor:"pointer",flexShrink:0,accentColor:"#111"}}),
+      h("input",{type:"checkbox",checked:checked,onChange:function(){onCheck(order.id);},style:{marginTop:3,cursor:"pointer",flexShrink:0,accentColor:"#111"}}),
       h("span",{className:"card-title"},order.title),
       h("div",{className:"card-actions"},
-        h("button",{className:"icon-btn",title:"Redaguoti",onClick:()=>onEdit(order)},"✏️"),
-        h("button",{className:"icon-btn",title:"Ištrinti",onClick:()=>onDelete(order.id)},"🗑")
+        h("button",{className:"icon-btn",title:"Redaguoti",onClick:function(){onEdit(order);}},"✏️"),
+        h("button",{className:"icon-btn",title:"I\u0161trinti",onClick:function(){onDelete(order.id);}},"🗑")
       )
     ),
-    cat&&h("span",{className:"cat-badge",style:{color:cat.hex,borderColor:cat.hex+"55"}},cat.label),
+    cat&&h("span",{className:"cat-badge",style:{color:cat.hex,borderColor:cat.hex+"55"}},cat.name),
     h("div",{className:"card-meta",style:{marginBottom:partial?8:0}},
-      h("span",{className:"card-qty"},(partial?`${order.quantity_received}/${order.quantity}`:order.quantity)+" "+order.unit),
+      h("span",{className:"card-qty"},(partial?order.quantity_received+"/"+order.quantity:order.quantity)+" "+order.unit),
       supplier&&h("span",{className:"card-supplier"},supplier.name)
     ),
     partial&&h("div",null,
       h("div",{className:"progress-bar"},h("div",{className:"progress-fill",style:{width:pct+"%",background:"#ca8a04"}})),
-      h("span",{className:"progress-warn"},"⚠ Trūksta: "+(order.quantity-order.quantity_received)+" "+order.unit)
+      h("span",{className:"progress-warn"},"\u26A0 Tr\u016bksta: "+(order.quantity-order.quantity_received)+" "+order.unit)
     ),
     (order.deadline||order.estimated_price)&&h("div",{className:"card-footer"},
       order.deadline&&h("span",null,"📅 "+new Date(order.deadline).toLocaleDateString("lt-LT")),
-      order.estimated_price&&h("span",null,"💶 ~"+order.estimated_price+"€"+(order.actual_price?" → "+order.actual_price+"€":""))
+      order.estimated_price&&h("span",null,"💶 ~"+order.estimated_price+"\u20ac"+(order.actual_price?" \u2192 "+order.actual_price+"\u20ac":""))
     ),
     order.url&&h("a",{href:order.url,target:"_blank",rel:"noopener noreferrer",className:"card-url"},"🔗 "+order.url.replace(/^https?:\/\/(www\.)?/,"")),
     order.notes&&h("p",{className:"card-notes"},order.notes),
-    order.status!=="gauta"&&h("button",{className:"card-action-btn",onClick:()=>order.status==="poreikis"?onMove(order):onReceive(order)},
-      order.status==="poreikis"?"→ Užsakyti":"→ Žymėti gautą"
+    order.status!=="gauta"&&h("button",{className:"card-action-btn",onClick:function(){order.status==="poreikis"?onMove(order):onReceive(order);}},
+      order.status==="poreikis"?"\u2192 U\u017esakyti":"\u2192 \u017dym\u0117ti gaut\u0105"
     )
   );
 }
 
-// ── App ───────────────────────────────────────────────────────────────
 function App(){
-  const[orders,setOrders]=useState([]);
-  const[suppliers,setSuppliers]=useState([]);
-  const[loading,setLoading]=useState(true);
-  const[err,setErr]=useState(null);
-  const[view,setView]=useState("kanban");
-  const[catF,setCatF]=useState("all");
-  const[ordM,setOrdM]=useState(null);
-  const[recM,setRecM]=useState(null);
-  const[supM,setSupM]=useState(null);
-  const[sel,setSel]=useState(new Set());
+  var os=useState([]);var orders=os[0];var setOrders=os[1];
+  var ss=useState([]);var suppliers=ss[0];var setSuppliers=ss[1];
+  var cs=useState([]);var cats=cs[0];var setCats=cs[1];
+  var ls=useState(true);var loading=ls[0];var setLoading=ls[1];
+  var es=useState(null);var err=es[0];var setErr=es[1];
+  var vs=useState("kanban");var view=vs[0];var setView=vs[1];
+  var cfs=useState("all");var catF=cfs[0];var setCatF=cfs[1];
+  var oms=useState(null);var ordM=oms[0];var setOrdM=oms[1];
+  var rms=useState(null);var recM=rms[0];var setRecM=rms[1];
+  var sms=useState(null);var supM=sms[0];var setSupM=sms[1];
+  var cms=useState(null);var catM=cms[0];var setCatM=cms[1];
+  var sels=useState(new Set());var sel=sels[0];var setSel=sels[1];
 
-  const load=useCallback(async()=>{
+  var load=useCallback(async function(){
     try{
-      const[o,s]=await Promise.all([
+      var res=await Promise.all([
         q("GET","orders",null,"?select=*&order=created_at.desc"),
         q("GET","suppliers",null,"?select=*&order=name"),
+        q("GET","categories",null,"?select=*&order=sort_order,name"),
       ]);
-      setOrders(o||[]);setSuppliers(s||[]);
+      setOrders(res[0]||[]);setSuppliers(res[1]||[]);setCats(res[2]||[]);
     }catch(e){setErr(e.message);}
     finally{setLoading(false);}
   },[]);
 
-  useEffect(()=>{load();},[load]);
+  useEffect(function(){load();},[load]);
 
-  const saveOrder=async(form)=>{
-    const clean={...form,deadline:form.deadline||null,url:form.url||null,notes:form.notes||null};
-    if(ordM?.order?.id)await q("PATCH","orders",clean,`?id=eq.${ordM.order.id}`);
-    else await q("POST","orders",{...clean,quantity_received:0});
+  async function saveOrder(form){
+    if(ordM&&ordM.order&&ordM.order.id)await q("PATCH","orders",form,"?id=eq."+ordM.order.id);
+    else await q("POST","orders",Object.assign({},form,{quantity_received:0}));
     setOrdM(null);await load();
-  };
-  const delOrder=async(id)=>{
-    if(!confirm("Ar tikrai ištrinti?"))return;
-    await q("DELETE","orders",null,`?id=eq.${id}`);
-    setOrders(o=>o.filter(x=>x.id!==id));
-    setSel(s=>{const n=new Set(s);n.delete(id);return n;});
-  };
-  const moveToOrdered=async(order)=>{
-    await q("PATCH","orders",{status:"uzsakyta",ordered_at:new Date().toISOString()},`?id=eq.${order.id}`);
+  }
+  async function delOrder(id){
+    if(!confirm("Ar tikrai i\u0161trinti?"))return;
+    await q("DELETE","orders",null,"?id=eq."+id);
+    setOrders(function(o){return o.filter(function(x){return x.id!==id;});});
+    setSel(function(s){var n=new Set(s);n.delete(id);return n;});
+  }
+  async function moveToOrdered(order){
+    await q("PATCH","orders",{status:"uzsakyta",ordered_at:new Date().toISOString()},"?id=eq."+order.id);
     await load();
-  };
-  const receiveQty=async(order,qty,price)=>{
-    const nr=order.quantity_received+qty;
-    const done=nr>=order.quantity;
-    await q("PATCH","orders",{quantity_received:nr,...(price!=null?{actual_price:price}:{}),...(done?{status:"gauta",received_at:new Date().toISOString()}:{})},`?id=eq.${order.id}`);
+  }
+  async function receiveQty(order,qty,price){
+    var nr=order.quantity_received+qty;
+    var done=nr>=order.quantity;
+    var upd={quantity_received:nr};
+    if(price!=null)upd.actual_price=price;
+    if(done){upd.status="gauta";upd.received_at=new Date().toISOString();}
+    await q("PATCH","orders",upd,"?id=eq."+order.id);
     setRecM(null);await load();
-  };
-  const saveSupplier=async(form)=>{
-    if(supM?.supplier?.id)await q("PATCH","suppliers",form,`?id=eq.${supM.supplier.id}`);
+  }
+  async function saveSupplier(form){
+    if(supM&&supM.supplier&&supM.supplier.id)await q("PATCH","suppliers",form,"?id=eq."+supM.supplier.id);
     else await q("POST","suppliers",form);
     setSupM(null);await load();
-  };
-  const delSupplier=async(id)=>{
-    if(!confirm("Ar tikrai ištrinti?"))return;
-    await q("DELETE","suppliers",null,`?id=eq.${id}`);
-    setSuppliers(s=>s.filter(x=>x.id!==id));
-  };
-  const toggle=(id)=>setSel(s=>{const n=new Set(s);n.has(id)?n.delete(id):n.add(id);return n;});
+  }
+  async function delSupplier(id){
+    if(!confirm("Ar tikrai i\u0161trinti?"))return;
+    await q("DELETE","suppliers",null,"?id=eq."+id);
+    setSuppliers(function(s){return s.filter(function(x){return x.id!==id;});});
+  }
+  async function saveCat(form){
+    if(catM&&catM.cat&&catM.cat.id)await q("PATCH","categories",form,"?id=eq."+catM.cat.id);
+    else await q("POST","categories",form);
+    setCatM(null);await load();
+  }
+  async function delCat(id){
+    var inUse=orders.some(function(o){return o.category===id;});
+    if(inUse){alert("Negalima i\u0161trinti \u2013 kategorija naudojama u\u017esakymuose.");return;}
+    if(!confirm("Ar tikrai i\u0161trinti \u0161i\u0105 kategorij\u0105?"))return;
+    await q("DELETE","categories",null,"?id=eq."+id);
+    setCats(function(c){return c.filter(function(x){return x.id!==id;});});
+  }
+  function toggle(id){setSel(function(s){var n=new Set(s);n.has(id)?n.delete(id):n.add(id);return n;});}
 
-  const printPDF=()=>{
-    const items=orders.filter(o=>sel.has(o.id));
-    if(!items.length){alert("Nepasirinkta jokių užsakymų");return;}
-    const stl={poreikis:"Poreikis",uzsakyta:"Užsakyta",gauta:"Gauta"};
-    const rows=items.map(o=>{
-      const s=suppliers.find(x=>x.id===o.supplier_id);
-      const c=CATS.find(x=>x.id===o.category);
-      return`<tr><td>${o.title}</td><td>${c?.label||""}</td><td>${s?.name||""}</td><td>${o.quantity_received>0?o.quantity_received+"/":""}${o.quantity} ${o.unit}</td><td>${stl[o.status]||""}</td><td>${o.estimated_price?o.estimated_price+"€":""}${o.actual_price?" ("+o.actual_price+"€)":""}</td><td>${o.deadline?new Date(o.deadline).toLocaleDateString("lt-LT"):""}</td><td>${o.notes||""}</td></tr>`;
+  function printPDF(){
+    var items=orders.filter(function(o){return sel.has(o.id);});
+    if(!items.length){alert("Nepasirinkta joki\u0173 u\u017esakym\u0173");return;}
+    var stl={poreikis:"Poreikis",uzsakyta:"\u017dsakyta",gauta:"Gauta"};
+    var rows=items.map(function(o){
+      var s=suppliers.find(function(x){return x.id===o.supplier_id;});
+      var c=cats.find(function(x){return x.id===o.category;});
+      return "<tr><td>"+o.title+"</td><td>"+(c?c.name:"")+"</td><td>"+(s?s.name:"")+"</td><td>"+(o.quantity_received>0?o.quantity_received+"/":"")+o.quantity+" "+o.unit+"</td><td>"+(stl[o.status]||"")+"</td><td>"+(o.estimated_price?o.estimated_price+"\u20ac":"")+(o.actual_price?" ("+o.actual_price+"\u20ac)":"")+"</td><td>"+(o.deadline?new Date(o.deadline).toLocaleDateString("lt-LT"):"")+"</td><td>"+(o.notes||"")+"</td></tr>";
     }).join("");
-    const w=window.open("","_blank");
-    w.document.write(`<!DOCTYPE html><html><head><title>Užsakymai</title><meta charset="UTF-8"><style>body{font-family:Arial;padding:20px;font-size:12px}h2{font-size:15px;margin:0 0 14px}table{width:100%;border-collapse:collapse}th{background:#f0f0f0;padding:7px 6px;text-align:left;border:1px solid #ccc;font-size:11px}td{padding:5px 6px;border:1px solid #e0e0e0;vertical-align:top}tr:nth-child(even)td{background:#fafafa}@media print{body{padding:0}}</style></head><body><h2>Užsakymai · ${new Date().toLocaleDateString("lt-LT")}</h2><table><thead><tr><th>Pavadinimas</th><th>Kategorija</th><th>Tiekėjas</th><th>Kiekis</th><th>Statusas</th><th>Kaina</th><th>Terminas</th><th>Pastabos</th></tr></thead><tbody>${rows}</tbody></table><script>setTimeout(()=>window.print(),300)<\/script></body></html>`);
+    var w=window.open("","_blank");
+    w.document.write("<!DOCTYPE html><html><head><title>U\u017esakymai</title><meta charset=\"UTF-8\"><style>body{font-family:Arial;padding:20px;font-size:12px}h2{font-size:15px;margin:0 0 14px}table{width:100%;border-collapse:collapse}th{background:#f0f0f0;padding:7px 6px;text-align:left;border:1px solid #ccc;font-size:11px}td{padding:5px 6px;border:1px solid #e0e0e0;vertical-align:top}tr:nth-child(even)td{background:#fafafa}@media print{body{padding:0}}</style></head><body><h2>U\u017esakymai \xB7 "+new Date().toLocaleDateString("lt-LT")+"</h2><table><thead><tr><th>Pavadinimas</th><th>Kategorija</th><th>Tiek\u0117jas</th><th>Kiekis</th><th>Statusas</th><th>Kaina</th><th>Terminas</th><th>Pastabos</th></tr></thead><tbody>"+rows+"</tbody></table><script>setTimeout(function(){window.print();},300)<\/script></body></html>");
     w.document.close();
-  };
+  }
 
-  const cols={
-    poreikis:{label:"Poreikis",c:"#2563eb",items:(catF==="all"?orders:orders.filter(o=>o.category===catF)).filter(o=>o.status==="poreikis")},
-    uzsakyta:{label:"Užsakyta",c:"#ca8a04",items:(catF==="all"?orders:orders.filter(o=>o.category===catF)).filter(o=>o.status==="uzsakyta")},
-    gauta:{label:"Gauta",c:"#16a34a",items:(catF==="all"?orders:orders.filter(o=>o.category===catF)).filter(o=>o.status==="gauta")},
+  var filtered=catF==="all"?orders:orders.filter(function(o){return o.category===catF;});
+  var cols={
+    poreikis:{label:"Poreikis",c:"#2563eb",items:filtered.filter(function(o){return o.status==="poreikis";})},
+    uzsakyta:{label:"\u017dsakyta",c:"#ca8a04",items:filtered.filter(function(o){return o.status==="uzsakyta";})},
+    gauta:{label:"Gauta",c:"#16a34a",items:filtered.filter(function(o){return o.status==="gauta";})},
   };
 
   if(loading)return h("div",{className:"loading"},"Jungiamasi prie Supabase...");
-  if(err)return h("div",{className:"error-box"},h("strong",null,"Klaida:"),h("br"),err,h("br"),h("br"),h("small",{style:{color:"#9ca3af"}},"Patikrink ar paleidai SQL schemą Supabase SQL Editor lange."));
+  if(err)return h("div",{className:"error-box"},h("strong",null,"Klaida:"),h("br"),err);
 
   return h("div",null,
-    h("h2",{className:"sr-only"},"CNC užsakymų sistema"),
-
-    // Header
+    h("h2",{className:"sr-only"},"CNC u\u017esakym\u0173 sistema"),
     h("div",{className:"header"},
       h("div",{className:"header-inner"},
         h("div",{className:"logo"},
-          h("span",{className:"logo-icon"},"⚙️"),
-          h("span",{className:"logo-text"},"CNC užsakymai")
+          h("span",{style:{fontSize:20}},"⚙️"),
+          h("span",{className:"logo-text"},"CNC u\u017esakymai")
         ),
         h("div",{className:"tabs"},
-          h("button",{className:"tab"+(view==="kanban"?" active":""),onClick:()=>setView("kanban")},"📋 Užsakymai"),
-          h("button",{className:"tab"+(view==="suppliers"?" active":""),onClick:()=>setView("suppliers")},"🏭 Tiekėjai")
+          h("button",{className:"tab"+(view==="kanban"?" active":""),onClick:function(){setView("kanban");}},"📋 U\u017esakymai"),
+          h("button",{className:"tab"+(view==="suppliers"?" active":""),onClick:function(){setView("suppliers");}},"🏭 Tiek\u0117jai"),
+          h("button",{className:"tab"+(view==="cats"?" active":""),onClick:function(){setView("cats");}},"🏷 Kategorijos")
         )
       )
     ),
 
-    // Kanban view
     view==="kanban"&&h("div",null,
       h("div",{className:"toolbar"},
         h("div",{className:"chip-row"},
-          h("button",{className:"chip"+(catF==="all"?" active":""),onClick:()=>setCatF("all")},"Visi"),
-          CATS.map(c=>h("button",{key:c.id,className:"chip",onClick:()=>setCatF(c.id),style:catF===c.id?{borderColor:c.hex,color:c.hex,background:c.hex+"15"}:{}},c.label))
+          h("button",{className:"chip"+(catF==="all"?" active":""),onClick:function(){setCatF("all");}},"Visi"),
+          cats.map(function(c){
+            return h("button",{key:c.id,className:"chip",onClick:function(){setCatF(c.id);},style:catF===c.id?{borderColor:c.hex,color:c.hex,background:c.hex+"15"}:{}},c.name);
+          })
         ),
         h("div",{className:"btn-row"},
           sel.size>0&&h("button",{className:"btn-secondary",onClick:printPDF},"🖨 PDF ("+sel.size+")"),
-          h("button",{className:"btn-primary",onClick:()=>setOrdM({mode:"add"})},"+ Pridėti")
+          h("button",{className:"btn-primary",onClick:function(){setOrdM({mode:"add"});}},"+ Prid\u0117ti")
         )
       ),
       h("div",{className:"kanban"},
-        Object.entries(cols).map(([key,col])=>
-          h("div",{key},
+        Object.keys(cols).map(function(key){
+          var col=cols[key];
+          return h("div",{key:key},
             h("div",{className:"col-header"},
               h("div",{className:"col-title"},
                 h("div",{className:"col-dot",style:{background:col.c}}),
@@ -420,47 +488,72 @@ function App(){
               h("span",{className:"col-count"},col.items.length)
             ),
             h("div",{className:"col-body"},
-              col.items.map(o=>h(Card,{key:o.id,order:o,supplier:suppliers.find(s=>s.id===o.supplier_id),checked:sel.has(o.id),onCheck:toggle,onEdit:o=>setOrdM({mode:"edit",order:o}),onDelete:delOrder,onMove:moveToOrdered,onReceive:o=>setRecM(o)})),
-              col.items.length===0&&h("div",{className:"col-empty"},"Nėra")
+              col.items.map(function(o){
+                return h(Card,{key:o.id,order:o,supplier:suppliers.find(function(s){return s.id===o.supplier_id;}),cat:cats.find(function(c){return c.id===o.category;}),checked:sel.has(o.id),onCheck:toggle,onEdit:function(o){setOrdM({mode:"edit",order:o});},onDelete:delOrder,onMove:moveToOrdered,onReceive:function(o){setRecM(o);}});
+              }),
+              col.items.length===0&&h("div",{className:"col-empty"},"N\u0117ra")
             )
-          )
-        )
+          );
+        })
       )
     ),
 
-    // Suppliers view
     view==="suppliers"&&h("div",null,
-      h("div",{style:{maxWidth:1100,margin:"0 auto",padding:"16px 20px 0",display:"flex",justifyContent:"flex-end"}},
-        h("button",{className:"btn-primary",onClick:()=>setSupM({mode:"add"})},"+ Tiekėjas")
-      ),
-      h("div",{className:"suppliers-grid"},
-        suppliers.map(s=>
-          h("div",{key:s.id,className:"supplier-card"},
-            h("div",{className:"supplier-header"},
+      h("div",{className:"page-header"},h("button",{className:"btn-primary",onClick:function(){setSupM({mode:"add"});}},"+ Tiek\u0117jas")),
+      h("div",{className:"page-grid"},
+        suppliers.map(function(s){
+          return h("div",{key:s.id,className:"item-card"},
+            h("div",{className:"item-header"},
               h("div",{style:{display:"flex",alignItems:"center",gap:9}},
-                h("div",{className:"supplier-icon"},"🏭"),
+                h("div",{className:"item-icon"},"🏭"),
                 h("span",{style:{fontWeight:600,fontSize:14}},s.name)
               ),
               h("div",{style:{display:"flex",gap:2}},
-                h("button",{className:"icon-btn",onClick:()=>setSupM({mode:"edit",supplier:s})},"✏️"),
-                h("button",{className:"icon-btn",onClick:()=>delSupplier(s.id)},"🗑")
+                h("button",{className:"icon-btn",onClick:function(){setSupM({mode:"edit",supplier:s});}},"✏️"),
+                h("button",{className:"icon-btn",onClick:function(){delSupplier(s.id);}},"🗑")
               )
             ),
-            h("div",{className:"supplier-info"},
+            h("div",{className:"item-info"},
               s.phone&&h("span",null,"📞 "+s.phone),
               s.website&&h("a",{href:s.website,target:"_blank",rel:"noopener noreferrer",style:{color:"#2563eb",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}},"🌐 "+s.website.replace(/^https?:\/\/(www\.)?/,"")),
-              s.notes&&h("span",{className:"supplier-divider",style:{color:"#9ca3af"}},s.notes),
-              h("span",{className:"supplier-divider",style:{color:"#9ca3af",fontSize:11}},"📦 "+orders.filter(o=>o.supplier_id===s.id).length+" užsakymų")
+              s.notes&&h("span",{className:"item-divider",style:{color:"#9ca3af"}},s.notes),
+              h("span",{className:"item-divider",style:{color:"#9ca3af",fontSize:11}},"📦 "+orders.filter(function(o){return o.supplier_id===s.id;}).length+" u\u017esakym\u0173")
             )
-          )
-        ),
-        suppliers.length===0&&h("div",{style:{color:"#9ca3af",fontSize:13,padding:"20px 0"}},"Dar nėra tiekėjų.")
+          );
+        }),
+        suppliers.length===0&&h("div",{style:{color:"#9ca3af",fontSize:13,padding:"20px 0"}},"Dar n\u0117ra tiek\u0117j\u0173.")
       )
     ),
 
-    ordM&&h(OrderModal,{order:ordM.order,suppliers,onSave:saveOrder,onClose:()=>setOrdM(null)}),
-    recM&&h(ReceiveModal,{order:recM,onReceive:receiveQty,onClose:()=>setRecM(null)}),
-    supM&&h(SupplierModal,{supplier:supM.supplier,onSave:saveSupplier,onClose:()=>setSupM(null)})
+    view==="cats"&&h("div",null,
+      h("div",{className:"page-header"},h("button",{className:"btn-primary",onClick:function(){setCatM({mode:"add"});}},"+ Kategorija")),
+      h("div",{className:"page-grid"},
+        cats.map(function(c){
+          return h("div",{key:c.id,className:"item-card"},
+            h("div",{className:"item-header"},
+              h("div",{style:{display:"flex",alignItems:"center",gap:10}},
+                h("div",{style:{width:34,height:34,borderRadius:8,background:c.hex,flexShrink:0}}),
+                h("span",{style:{fontWeight:600,fontSize:14,color:c.hex}},c.name)
+              ),
+              h("div",{style:{display:"flex",gap:2}},
+                h("button",{className:"icon-btn",onClick:function(){setCatM({mode:"edit",cat:c});}},"✏️"),
+                h("button",{className:"icon-btn",onClick:function(){delCat(c.id);}},"🗑")
+              )
+            ),
+            h("div",{className:"item-info"},
+              h("span",{style:{fontFamily:"monospace",fontSize:11,color:"#9ca3af"}},c.hex),
+              h("span",{className:"item-divider",style:{color:"#9ca3af",fontSize:11}},"📦 "+orders.filter(function(o){return o.category===c.id;}).length+" u\u017esakym\u0173")
+            )
+          );
+        }),
+        cats.length===0&&h("div",{style:{color:"#9ca3af",fontSize:13,padding:"20px 0"}},"Dar n\u0117ra kategorij\u0173.")
+      )
+    ),
+
+    ordM&&h(OrderModal,{order:ordM.order,suppliers:suppliers,cats:cats,onSave:saveOrder,onClose:function(){setOrdM(null);}}),
+    recM&&h(ReceiveModal,{order:recM,onReceive:receiveQty,onClose:function(){setRecM(null);}}),
+    supM&&h(SupplierModal,{supplier:supM.supplier,onSave:saveSupplier,onClose:function(){setSupM(null);}}),
+    catM&&h(CategoryModal,{cat:catM.cat,onSave:saveCat,onClose:function(){setCatM(null);}})
   );
 }
 
