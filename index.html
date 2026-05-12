@@ -204,7 +204,7 @@ function OrderModal(props){
           h(Field,{label:"Statusas"},
             h("select",{className:"field-input",value:f.status,onChange:function(e){set("status",e.target.value);}},
               h("option",{value:"poreikis"},"Poreikis"),
-              h("option",{value:"uzsakyta"},"\u017dsakyta"),
+              h("option",{value:"uzsakyta"},"U\u017dsakyta"),
               h("option",{value:"gauta"},"Gauta")
             )
           )
@@ -426,7 +426,7 @@ function App(){
   function printPDF(){
     var items=orders.filter(function(o){return sel.has(o.id);});
     if(!items.length){alert("Nepasirinkta joki\u0173 u\u017esakym\u0173");return;}
-    var stl={poreikis:"Poreikis",uzsakyta:"\u017dsakyta",gauta:"Gauta"};
+    var stl={poreikis:"Poreikis",uzsakyta:"U\u017dsakyta",gauta:"Gauta"};
     var rows=items.map(function(o){
       var s=suppliers.find(function(x){return x.id===o.supplier_id;});
       var c=cats.find(function(x){return x.id===o.category;});
@@ -440,7 +440,7 @@ function App(){
   var filtered=catF==="all"?orders:orders.filter(function(o){return o.category===catF;});
   var cols={
     poreikis:{label:"Poreikis",c:"#2563eb",items:filtered.filter(function(o){return o.status==="poreikis";})},
-    uzsakyta:{label:"\u017dsakyta",c:"#ca8a04",items:filtered.filter(function(o){return o.status==="uzsakyta";})},
+    uzsakyta:{label:"U\u017dsakyta",c:"#ca8a04",items:filtered.filter(function(o){return o.status==="uzsakyta";})},
     gauta:{label:"Gauta",c:"#16a34a",items:filtered.filter(function(o){return o.status==="gauta";})},
   };
 
